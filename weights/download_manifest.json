@@ -1,9 +1,9 @@
 {
   "vehicle": {
-    "file": "yolo11n.pt",
+    "file": "yolo26s.pt",
     "repo": "Ultralytics/YOLO11",
     "revision": "8b8ac7d1fae7468f85dbf89670dd66f41f485aab",
-    "remote": "yolo11n.pt",
+    "remote": "yolo26s.pt",
     "sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1"
   },
   "traffic": {
