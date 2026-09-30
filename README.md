@@ -1,4 +1,4 @@
-# Phát hiện vi phạm vượt đèn đỏ — YOLO26, MVC, multi-camera
+# Phát hiện vi phạm vượt đèn đỏ — YOLO26, multi-camera
 
 #Bài toán và hướng giải quyết
 
