@@ -1,6 +1,7 @@
 # Phát hiện vi phạm vượt đèn đỏ — YOLO26, MVC, multi-camera
 
 #Bài toán và hướng giải quyết
+
 Bài toán phát hiện phương tiện vi phạm vượt đèn đỏ từ đầu vào là file mp4 hoặc RTSP ( chưa kiểm thử) 
 Có vùng polygon theo dõi xe, chỉ xe trong polygon mới được detect và xác định vi phạm, vạch xác định vi phạm và chiều đi của làn , ROI để xác định đèn giao thông và màu đèn
 
