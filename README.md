@@ -7,9 +7,13 @@ Có vùng polygon theo dõi xe, chỉ xe trong polygon mới được detect và
 
 Hướng giải quyết: 
 1. Nhận diện dữ liệu và khởi tạo camera
+
    Chương trình đọc settings.yaml và cameras.yaml để lấy nguồn video hoặc RTSP, weights, ngưỡng confidence, ROI đèn, polygon và vạch dừng của từng cam
+   
 2. Nhận diện màu đèn trong vùng ROI
+
    Từ frame gốc, chương trình cắt ROI đèn và chạy model nhận diện màu đèn: RED, YELLOW, GREEN, UNKNOWN.
+   
 3. Phát hiện phương tiện và lọc vùng xét
    
    Model vehicle_n_best.pt dùng để nhận diện phương tiện chạy trên từng frame, trả về bounding box, confidence và lớp phương tiện.
