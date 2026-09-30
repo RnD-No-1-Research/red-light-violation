@@ -1,0 +1,11 @@
+# Cần tự chuẩn bị ảnh thật và nhãn YOLO; không đi kèm dataset.
+# Khi train: thay path bằng đường dẫn dataset thật (ưu tiên đường dẫn tuyệt đối).
+# Ultralytics có quy tắc datasets_dir riêng cho path tương đối.
+path: data/traffic_light_dataset
+train: images/train
+val: images/val
+names:
+  0: red
+  1: green
+  2: yellow
+

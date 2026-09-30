@@ -1,0 +1,24 @@
+traffic_light_model: weights/traffic_light.pt
+vehicle_model: weights/yolo26s.pt
+plate_model: weights/plate_detect.pt
+traffic_light_conf: 0.15
+vehicle_conf: 0.25
+plate_conf: 0.5
+light_smoothing_window: 5
+output_base_dir: output
+device: auto
+imgsz: 640
+ocr_model_dir: weights/easyocr
+ocr_download_enabled: true
+rtsp_retries: 3
+rtsp_retry_delay: 5.0
+rtsp_timeout_ms: 5000
+fallback_fps: 25.0
+show_video: true
+# Tên nhãn checkpoint công khai; có thể đổi thành red/green/yellow.
+traffic_light_labels:
+  Traffic Light -Red-: RED
+  Traffic Light -Green-: GREEN
+  Traffic Light -Yellow-: YELLOW
+  Traffic Light -Off-: UNKNOWN
+

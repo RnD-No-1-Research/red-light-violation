@@ -1,0 +1,23 @@
+{
+  "vehicle": {
+    "file": "yolo11n.pt",
+    "repo": "Ultralytics/YOLO11",
+    "revision": "8b8ac7d1fae7468f85dbf89670dd66f41f485aab",
+    "remote": "yolo11n.pt",
+    "sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1"
+  },
+  "traffic": {
+    "file": "traffic_light.pt",
+    "repo": "Sawanparuthipqr/trafficlights_detection_models",
+    "revision": "dd820f77ea31d47574589391b190b6f7fa20296d",
+    "remote": "collected_checkpoints/tl-yolo11n.pt",
+    "sha256": "a90c121b6a1e2ed5417f46edba2e6245738cdafc698ca7c5cdc395002b58cd4e"
+  },
+  "plate": {
+    "file": "plate_detect.pt",
+    "repo": "morsetechlab/yolov11-license-plate-detection",
+    "revision": "251a30d7daedca065f56e04b0af04052c907c68f",
+    "remote": "license-plate-finetune-v1n.pt",
+    "sha256": "0aec75976c56eb6f26dfb274c430620ec65137915ff1ae47c3a48c7af8afb7b2"
+  }
+}

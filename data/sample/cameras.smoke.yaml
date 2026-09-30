@@ -1,0 +1,18 @@
+cameras:
+  - camera_id: smoke_01
+    name: Synthetic I/O check 1
+    source: data/videos/smoke_01.mp4
+    stop_line:
+      point1: [10, 150]
+      point2: [310, 150]
+    traffic_light_roi: [250, 30, 40, 80]
+    enabled: true
+  - camera_id: smoke_02
+    name: Synthetic I/O check 2
+    source: data/videos/smoke_02.mp4
+    stop_line:
+      point1: [10, 150]
+      point2: [310, 150]
+    traffic_light_roi: [250, 30, 40, 80]
+    enabled: true
+

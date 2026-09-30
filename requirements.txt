@@ -1,0 +1,12 @@
+ultralytics==8.3.203
+torch==2.8.0
+torchvision==0.23.0
+easyocr==1.7.2
+opencv-python==4.12.0.88
+# EasyOCR yêu cầu gói headless; cùng phiên bản để tránh lệch binary cv2.
+opencv-python-headless==4.12.0.88
+numpy==2.2.6
+PyYAML==6.0.2
+lap==0.5.12
+pytest==8.4.2
+

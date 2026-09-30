@@ -1,0 +1,77 @@
+cameras:
+- camera_id: cam_01
+  name: Camera video 1
+  source: data/videos/vid_1.mp4
+  stop_line:
+    point1:
+    - 1420
+    - 797
+    point2:
+    - 0
+    - 914
+  crossing_direction: negative_to_positive
+  traffic_light_roi:
+  - 1371
+  - 213
+  - 58
+  - 194
+  enabled: true
+  detection_polygon:
+  - - 9
+    - 732
+  - - 1377
+    - 590
+  - - 1599
+    - 1094
+  - - 0
+    - 1170
+- camera_id: cam_02
+  name: Camera video 2
+  source: data/videos/vid_2.mp4
+  stop_line:
+    point1:
+    - 186
+    - 384
+    point2:
+    - 540
+    - 396
+  crossing_direction: positive_to_negative
+  traffic_light_roi:
+  - 551
+  - 146
+  - 19
+  - 88
+  # Chỉ thử cụm bóng đèn với viền đệm khi ROI chính trả UNKNOWN.
+  traffic_light_fallback_roi:
+  - 547
+  - 177
+  - 29
+  - 59
+  traffic_light_canvas_size: 192
+  enabled: true
+  detection_polygon:
+  - - 199
+    - 283
+  - - 527
+    - 292
+  - - 603
+    - 476
+  - - 94
+    - 473
+- camera_id: cam_rtsp
+  name: Camera IP
+  source: ${CAM_RTSP_URL}
+  stop_line:
+    point1:
+    - 100
+    - 400
+    point2:
+    - 800
+    - 400
+  crossing_direction: negative_to_positive
+  traffic_light_roi:
+  - 300
+  - 50
+  - 200
+  - 300
+  enabled: false
