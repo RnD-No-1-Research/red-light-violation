@@ -26,8 +26,8 @@ def _write(tmp_path: Path, rows: list[dict]) -> Path:
 
 
 def test_examples_and_disabled(tmp_path: Path) -> None:
-    """Cấu hình mẫu có hai camera; camera tắt được giữ placeholder."""
-    assert len(load_cameras(ROOT / "config/cameras.yaml")) == 2
+    """Cấu hình đang dùng hợp lệ; camera tắt được giữ placeholder."""
+    assert load_cameras(ROOT / "config/cameras.yaml")
     rows = [_row(), {"camera_id": "off", "enabled": False}]
     cameras = load_cameras(_write(tmp_path, rows), root=tmp_path)
     assert len(cameras) == 1
@@ -52,6 +52,10 @@ def test_examples_and_disabled(tmp_path: Path) -> None:
         {"stop_line": {"point1": [0, 0], "point2": [0, 0]}},
         {"crossing_direction": "sideways"},
         {"vehicle_conf": 2},
+        {"late_detection_enabled": "true"},
+        {"late_detection_band_height_ratio": 0},
+        {"late_detection_band_height_ratio": 3},
+        {"late_detection_min_red_seconds": -1},
     ],
 )
 def test_invalid(tmp_path: Path, change: dict) -> None:

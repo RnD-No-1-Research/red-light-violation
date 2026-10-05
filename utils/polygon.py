@@ -97,6 +97,6 @@ def contains_point(point: Point, polygon: Polygon) -> bool:
 
 
 def box_in_polygon(bbox: tuple[float, float, float, float], polygon: Polygon) -> bool:
-    """Xét xe bằng trung điểm cạnh dưới bbox, cùng điểm dùng để cắt vạch."""
+    """Lọc vùng bằng đáy bbox; điểm xét cắt vạch riêng nằm cao hơn 20 pixel."""
     x1, _, x2, y2 = bbox
     return contains_point(((x1 + x2) / 2, y2), polygon)

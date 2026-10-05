@@ -100,3 +100,43 @@ def test_fallback_only_when_primary_unknown(primary: str) -> None:
     if primary == "UNKNOWN":
         padded = seen[-1][0]
         np.testing.assert_array_equal(padded[66:125, 81:110], fallback)
+
+
+def test_hsv_verification_overrides_false_red() -> None:
+    """Khi YOLO báo RED nhưng crop thực tế toàn màu xanh, HSV sửa về GREEN."""
+    from models.traffic_light_detector import count_hsv_colors, verify_color_with_hsv
+
+    # Tạo ảnh BGR màu xanh lá (B=0, G=255, R=0)
+    green_crop = np.zeros((30, 15, 3), dtype=np.uint8)
+    green_crop[:, :] = [0, 255, 0]
+
+    r, y, g = count_hsv_colors(green_crop)
+    assert r == 0
+    assert y == 0
+    assert g == 30 * 15
+
+    # YOLO dự đoán nhầm là RED -> HSV sửa về GREEN
+    assert verify_color_with_hsv(green_crop, "RED") == "GREEN"
+
+
+def test_hsv_verification_preserves_and_recovers_colors() -> None:
+    """Kiểm tra các trường hợp giữ nguyên màu chuẩn và khôi phục khi UNKNOWN."""
+    from models.traffic_light_detector import verify_color_with_hsv
+
+    # Ảnh đỏ (B=0, G=0, R=255)
+    red_crop = np.zeros((30, 15, 3), dtype=np.uint8)
+    red_crop[:, :] = [0, 0, 255]
+    assert verify_color_with_hsv(red_crop, "RED") == "RED"
+    assert verify_color_with_hsv(red_crop, "GREEN") == "RED"
+    assert verify_color_with_hsv(red_crop, "UNKNOWN") == "RED"
+
+    # Ảnh vàng (B=0, G=255, R=255)
+    yellow_crop = np.zeros((30, 15, 3), dtype=np.uint8)
+    yellow_crop[:, :] = [0, 255, 255]
+    assert verify_color_with_hsv(yellow_crop, "YELLOW") == "YELLOW"
+    assert verify_color_with_hsv(yellow_crop, "UNKNOWN") == "YELLOW"
+
+    # Ảnh đen / nhiễu không đủ ngưỡng thì giữ UNKNOWN
+    black_crop = np.zeros((30, 15, 3), dtype=np.uint8)
+    assert verify_color_with_hsv(black_crop, "UNKNOWN") == "UNKNOWN"
+

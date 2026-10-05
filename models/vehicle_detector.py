@@ -1,4 +1,4 @@
-"""YOLO11 COCO dùng chung kết hợp ByteTrack riêng từng camera."""
+"""YOLO xe COCO hoặc custom dùng chung, ByteTrack riêng từng camera."""
 
 from pathlib import Path
 from types import SimpleNamespace
@@ -9,6 +9,16 @@ from ultralytics.trackers.byte_tracker import BYTETracker
 from models._yolo import LockedYOLO
 from models.types import Detection
 from utils.polygon import Polygon, box_in_polygon
+
+VEHICLE_LABELS = {
+    "bicycle": "bicycle",
+    "car": "car",
+    "motorcycle": "motorcycle",
+    "motorbike": "motorcycle",
+    "motobike": "motorcycle",
+    "bus": "bus",
+    "truck": "truck",
+}
 
 
 class CameraTracker(BYTETracker):
@@ -26,13 +36,17 @@ class VehicleDetector(LockedYOLO):
     def __init__(self, path: Path, device: str, imgsz: int) -> None:
         super().__init__(path, device, imgsz)
         self.trackers: dict[str, CameraTracker] = {}
-        self.classes = [
-            i
+        self.class_names = {
+            i: VEHICLE_LABELS[name.strip().casefold()]
             for i, name in self.model.names.items()
-            if name in {"bicycle", "car", "motorcycle", "bus", "truck"}
-        ]
-        if len(self.classes) != 5:
-            raise ValueError("vehicle_model cần weights COCO với đủ 5 nhóm xe")
+            if name.strip().casefold() in VEHICLE_LABELS
+        }
+        self.classes = list(self.class_names)
+        if not self.classes:
+            raise ValueError(
+                "vehicle_model không có nhãn xe được hỗ trợ: "
+                "bicycle, car, motorcycle/motorbike/motobike, bus, truck"
+            )
 
     def reset_camera(self, camera_id: str, confidence: float) -> None:
         """Tạo tracker rỗng cho camera mà không tải lại weights."""
@@ -87,7 +101,7 @@ class VehicleDetector(LockedYOLO):
                 Detection(
                     tuple(int(round(v)) for v in row[:4]),
                     float(row[5]),
-                    result.names[int(row[6])],
+                    self.class_names[int(row[6])],
                     int(row[4]),
                 )
                 for row in rows

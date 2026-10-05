@@ -1,0 +1,42 @@
+{
+  "decision": {
+    "id": "153346d76cef4ee5a17174c30b0c5e2b",
+    "camera_id": "cam_03",
+    "track_id": 61,
+    "timestamp": "2026-10-01T02:17:00.461207+00:00",
+    "reason": "LATE_DETECTION_AFTER_LINE",
+    "source_seconds": 17.285570370370372,
+    "sequence": 105,
+    "observed_crossing": false,
+    "first_seconds": 16.953155555555558,
+    "decision_seconds": 17.285570370370372,
+    "first_sequence": 103,
+    "decision_sequence": 105,
+    "first_bbox": [
+      460,
+      249,
+      496,
+      328
+    ],
+    "first_distance_after_line_px": 30.55529809742682,
+    "forward_progress_px": 0.9985905451294919,
+    "observations": 3,
+    "red_since_seconds": 14.958666666666668,
+    "motion_basis": "STATIONARY_AFTER_LINE"
+  },
+  "elapsed_seconds": 54.33659,
+  "frames": 384,
+  "fps": 7.067061072474368,
+  "target_vehicle": {
+    "id": "153346d76cef4ee5a17174c30b0c5e2b",
+    "camera_id": "cam_03",
+    "track_id": "61",
+    "timestamp": "2026-10-01T02:17:00.461+00:00",
+    "plate_text": "UNKNOWN",
+    "plate_confidence": "0.0000",
+    "vehicle_class": "motorcycle",
+    "evidence_path": "evidence/153346d76cef4ee5a17174c30b0c5e2b_frame.jpg"
+  },
+  "video": "C:\\Users\\Admin\\Documents\\Codex\\2026-09-29\\files-pasted-by-the-user-vai\\outputs\\red_light_violation\\output\\late_detection_final_20261001\\cam_03\\videos\\cam_03_20261001_091646_bca702ee12b1_001.mp4",
+  "evidence": "C:\\Users\\Admin\\Documents\\Codex\\2026-09-29\\files-pasted-by-the-user-vai\\outputs\\red_light_violation\\output\\late_detection_final_20261001\\cam_03\\evidence\\153346d76cef4ee5a17174c30b0c5e2b_frame.jpg"
+}

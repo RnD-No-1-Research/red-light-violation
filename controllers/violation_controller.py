@@ -10,12 +10,15 @@ from uuid import uuid4
 import numpy as np
 
 from models.types import Detection
-from utils.config_loader import CameraConfig, validate_geometry
+from utils.config_loader import CameraConfig, late_detection_settings, validate_geometry
 from utils.light_state import LightSmoother
 from utils.line_crossing import LineCrossing
+from utils.late_detection import LateDetection
+from utils.occlusion_review import OcclusionReview, ReviewEvent
 from utils.plate_format import normalize_plate
 from utils.polygon import box_in_polygon
 from utils.video_source import FramePacket, VideoSource
+from utils.vehicle_anchor import vehicle_anchor
 from views.display import Display
 
 
@@ -49,6 +52,18 @@ class ViolationController:
         )
         self.smoother = LightSmoother(settings["light_smoothing_window"])
         self.crossing = LineCrossing(camera.point1, camera.point2, camera.direction)
+        self.review = OcclusionReview(
+            camera.point1, camera.point2, camera.direction,
+            self.settings.get("occlusion_review_seconds", 1.0),
+        )
+        late = late_detection_settings(camera, self.settings)
+        self.late = LateDetection(
+            camera.point1, camera.point2, camera.direction,
+            enabled=late["late_detection_enabled"],
+            band_height_ratio=late["late_detection_band_height_ratio"],
+            min_red_seconds=late["late_detection_min_red_seconds"],
+            require_forward_motion=late["late_detection_require_forward_motion"],
+        )
         self.source: VideoSource | None = None
         self.view: Display | None = None
         self.run_id = uuid4().hex[:12]
@@ -68,6 +83,8 @@ class ViolationController:
         tracks: list[Detection],
         vehicle: Detection,
         state: str,
+        reason: str = "DIRECT_LINE_CROSSING",
+        details: dict | None = None,
     ) -> None:
         vehicle_crop = crop_image(packet.image, vehicle.bbox)
         plate_crop = None
@@ -96,6 +113,8 @@ class ViolationController:
             packet.timestamp,
             packet.source_seconds,
             highlight=set(self.crossing.recorded),
+            suspected=self.review.suspected | self.late.suspected,
+            direction_unknown=self.late.suspected,
         )
         self.view.save_evidence(
             event_id,
@@ -107,8 +126,10 @@ class ViolationController:
             annotated,
             vehicle_crop,
             plate_crop,
+            decision={"reason": reason, "source_seconds": packet.source_seconds,
+                      "sequence": packet.sequence, **(details or {})},
         )
-        self.log.info("Vi phạm track=%d, biển=%s", vehicle.track_id, plate_text)
+        self.log.info("Vi phạm track=%d, biển=%s, reason=%s", vehicle.track_id, plate_text, reason)
 
     def run(self) -> bool:
         """Chạy đến EOF/stop; trả False nếu nguồn video gặp lỗi cuối cùng."""
@@ -127,7 +148,6 @@ class ViolationController:
                 self.source = source
             epoch = -1
             last_size = (0, 0)
-            frame_index = 0
             while not self.stop_event.is_set():
                 packet = source.read_frame()
                 if packet is None:
@@ -138,6 +158,8 @@ class ViolationController:
                     validate_geometry(camera, (width, height))
                     self.smoother.reset()
                     self.crossing.reset()
+                    self.review.reset()
+                    self.late.reset()
                     self.models.vehicle.reset_camera(
                         camera.camera_id, settings["vehicle_conf"]
                     )
@@ -177,15 +199,54 @@ class ViolationController:
                     for track in tracks
                     if box_in_polygon(track.bbox, camera.detection_polygon)
                 ]
-                frame_index += 1
+                frame_index = packet.sequence
+                rejected_ids = set()
+                rejection_reasons = {}
                 for vehicle in tracks:
-                    x1, y1, x2, y2 = vehicle.bbox
-                    point = ((x1 + x2) / 2, float(y2))
+                    point = vehicle_anchor(vehicle.bbox)
                     if self.crossing.update(
-                        vehicle.track_id, point, frame_index, state
+                        vehicle.track_id, point, frame_index, state,
+                        bbox=vehicle.bbox, class_name=vehicle.class_name,
                     ):
                         self._save_violation(packet, tracks, vehicle, state)
+                    elif self.crossing.last_rejection:
+                        rejected_ids.add(vehicle.track_id)
+                        rejection_reasons[vehicle.track_id] = self.crossing.last_rejection
+                        self.log.info(
+                            "Bỏ lần cắt vạch không đáng tin track=%d: %s",
+                            vehicle.track_id, self.crossing.last_rejection,
+                        )
                 self.crossing.prune(frame_index)
+                for event in self.late.update(
+                    packet, tracks, state, raw_light, self.crossing.recorded,
+                    rejected_ids=rejected_ids,
+                    rejection_reasons=rejection_reasons,
+                ):
+                    self.crossing.recorded.add(event.vehicle.track_id)
+                    self._save_violation(
+                        packet, tracks, event.vehicle, state,
+                        reason="LATE_DETECTION_AFTER_LINE", details=event.details,
+                    )
+                for event in self.late.new_suspicions:
+                    annotated_review = self.view.annotate(
+                        frame, tracks, state, packet.timestamp, packet.source_seconds,
+                        highlight=self.crossing.recorded,
+                        suspected=self.review.suspected | self.late.suspected,
+                        direction_unknown=self.late.suspected,
+                    )
+                    self.view.save_late_review(uuid4().hex, event, packet, annotated_review)
+                    self.log.info(
+                        "NGHI VAN track=%d: chưa có bằng chứng hướng đi; không ghi vi phạm",
+                        event.vehicle.track_id,
+                    )
+                self.log.debug(
+                    "Late detection source_seconds=%s decisions=%s",
+                    packet.source_seconds, self.late.last_decisions,
+                )
+                for event in self.review.update(
+                    packet, tracks, state, raw_light, self.crossing.recorded
+                ):
+                    self._save_review(packet, tracks, state, event)
                 annotated = self.view.annotate(
                     frame,
                     tracks,
@@ -193,6 +254,8 @@ class ViolationController:
                     packet.timestamp,
                     packet.source_seconds,
                     set(self.crossing.recorded),
+                    suspected=self.review.suspected | self.late.suspected,
+                    direction_unknown=self.late.suspected,
                 )
                 self.view.write_frame(annotated)
                 if self.frame_callback is not None:
@@ -204,3 +267,28 @@ class ViolationController:
             if self.view is not None:
                 self.view.close()
             self.models.vehicle.drop_camera(camera.camera_id)
+            self.review.previous.clear()
+            self.late.pending.clear()
+
+    def _save_review(
+        self, packet: FramePacket, tracks: list[Detection], state: str,
+        event: ReviewEvent,
+    ) -> None:
+        before = event.before
+        before_image = self.view.annotate(
+            before.packet.image, [before.vehicle], "RED", before.packet.timestamp,
+            before.packet.source_seconds,
+        )
+        after_image = self.view.annotate(
+            packet.image, tracks, state, packet.timestamp, packet.source_seconds,
+            highlight=self.crossing.recorded,
+            suspected=self.review.suspected | self.late.suspected,
+            direction_unknown=self.late.suspected,
+        )
+        self.view.save_review(
+            uuid4().hex, event, packet, before_image, after_image
+        )
+        self.log.info(
+            "NGHI VAN VUOT DEN DO track=%d, gap=%.3fs; cần xem ảnh trước/sau",
+            event.after.track_id, event.gap_seconds,
+        )

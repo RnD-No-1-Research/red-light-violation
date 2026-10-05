@@ -87,6 +87,7 @@ def test_detector_filters_before_tracker() -> None:
     detector = VehicleDetector.__new__(VehicleDetector)
     detector.lock = threading.RLock()
     detector.device, detector.imgsz, detector.classes = "cpu", 640, [2]
+    detector.class_names = {2: "car"}
     boxes = Boxes(
         np.array(
             [[20, 30, 40, 50, 0.9, 2], [110, 30, 150, 50, 0.9, 2]], dtype=np.float32
@@ -158,7 +159,8 @@ def test_red_box_persists_after_light_changes(
     models = bundle()
     models.vehicle, models.traffic = PolygonVehicle(), ChangingLight()
     frames = []
-    config = replace(camera, detection_polygon=REGION)
+    # The y2-20 point crosses y=40 at frame 3 while the light is still red.
+    config = replace(camera, detection_polygon=REGION, point1=(0, 40), point2=(159, 40))
     controller = ViolationController(
         config,
         settings,

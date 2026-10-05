@@ -1,10 +1,18 @@
 traffic_light_model: weights/traffic_light.pt
-vehicle_model: weights/yolo26s.pt
+vehicle_model: weights/vehicle_n_best.pt
 plate_model: weights/plate_detect.pt
-traffic_light_conf: 0.15
-vehicle_conf: 0.25
-plate_conf: 0.5
+traffic_light_conf: 0.25
+vehicle_conf: 0.3
+plate_conf: 0.8
 light_smoothing_window: 5
+# Lưu nghi vấn vượt vạch khi mất detection ngắn; 0 để tắt, tối đa 1 giây.
+occlusion_review_seconds: 1.0
+# Mặc định cho mọi camera, bao gồm camera mới và RTSP.
+late_detection_enabled: true
+late_detection_band_height_ratio: 1.0
+late_detection_min_red_seconds: 1.0
+# Chưa biết hướng đi: chỉ nghi vấn; cần chuyển động tiến để đánh đỏ.
+late_detection_require_forward_motion: true
 output_base_dir: output
 device: auto
 imgsz: 640

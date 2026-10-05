@@ -15,6 +15,12 @@ from utils.polygon import Polygon, parse_polygon, validate_polygon_bounds
 
 ROOT = Path(__file__).resolve().parents[1]
 Point = tuple[float, float]
+LATE_DETECTION_DEFAULTS = {
+    "late_detection_enabled": True,
+    "late_detection_band_height_ratio": 1.0,
+    "late_detection_min_red_seconds": 1.0,
+    "late_detection_require_forward_motion": True,
+}
 
 
 @dataclass(frozen=True)
@@ -33,6 +39,11 @@ class CameraConfig:
     detection_polygon: Polygon = ()
     traffic_light_canvas_size: int = 0
     traffic_light_fallback_roi: tuple[int, int, int, int] | None = None
+    # None means inherit the common setting; explicit false still overrides true.
+    late_detection_enabled: bool | None = None
+    late_detection_band_height_ratio: float | None = None
+    late_detection_min_red_seconds: float | None = None
+    late_detection_require_forward_motion: bool | None = None
 
 
 def read_yaml(path: Path) -> dict[str, Any]:
@@ -68,9 +79,34 @@ def _confidence(value: Any, label: str) -> float:
     return result
 
 
+def _late_options(data: dict, *, use_defaults: bool = False) -> dict:
+    values = dict(LATE_DETECTION_DEFAULTS) if use_defaults else {}
+    values.update({key: data[key] for key in LATE_DETECTION_DEFAULTS if key in data})
+    for key in ("late_detection_enabled", "late_detection_require_forward_motion"):
+        if key in values and type(values[key]) is not bool:
+            raise ValueError(f"{key} phải là boolean")
+    for key, minimum in (("late_detection_band_height_ratio", 0.01),
+                         ("late_detection_min_red_seconds", 0.1)):
+        if key in values:
+            values[key] = _number(values[key], key, minimum)
+    if values.get("late_detection_band_height_ratio", 1.0) > 2:
+        raise ValueError("late_detection_band_height_ratio tối đa 2")
+    return values
+
+
+def late_detection_settings(camera: CameraConfig, settings: dict) -> dict:
+    """Resolve camera overrides over common settings, including explicit false."""
+    return {
+        key: (getattr(camera, key) if getattr(camera, key) is not None
+              else settings.get(key, default))
+        for key, default in LATE_DETECTION_DEFAULTS.items()
+    }
+
+
 def load_settings(path: Path, root: Path = ROOT) -> dict[str, Any]:
     """Đọc ngưỡng và đường dẫn chung; chưa khởi tạo AI."""
     data = read_yaml(path)
+    data.update(_late_options(data, use_defaults=True))
     for key in ("traffic_light_model", "vehicle_model", "plate_model"):
         if not isinstance(data.get(key), str) or not data[key].strip():
             raise ValueError(f"Thiếu đường dẫn {key}")
@@ -110,6 +146,11 @@ def load_settings(path: Path, root: Path = ROOT) -> dict[str, Any]:
     for key, default in {"rtsp_retry_delay": 5.0, "fallback_fps": 25.0}.items():
         data[key] = _number(data.get(key, default), key, 0.001)
     data.setdefault("device", "auto")
+    data["occlusion_review_seconds"] = _number(
+        data.get("occlusion_review_seconds", 1.0), "occlusion_review_seconds"
+    )
+    if data["occlusion_review_seconds"] > 1.0:
+        raise ValueError("occlusion_review_seconds tối đa 1 giây; 0 để tắt")
     if data["device"] not in ("auto", "cpu", "cuda", "cuda:0"):
         raise ValueError("device phải là auto, cpu, cuda hoặc cuda:0")
     data.setdefault("ocr_download_enabled", True)
@@ -197,6 +238,10 @@ def load_cameras(
             ):
                 raise ValueError(f"[{cid}] traffic_light_fallback_roi không hợp lệ")
         direction = row.get("crossing_direction", "negative_to_positive")
+        try:
+            late = _late_options(row)
+        except ValueError as exc:
+            raise ValueError(f"[{cid}] {exc}") from exc
         if direction not in ("negative_to_positive", "positive_to_negative"):
             raise ValueError(f"[{cid}] crossing_direction không hợp lệ")
         overrides = {
@@ -222,6 +267,10 @@ def load_cameras(
                 polygon,
                 canvas_size,
                 tuple(fallback_roi) if fallback_roi is not None else None,
+                late.get("late_detection_enabled"),
+                late.get("late_detection_band_height_ratio"),
+                late.get("late_detection_min_red_seconds"),
+                late.get("late_detection_require_forward_motion"),
             )
         )
     if camera_id is not None and not result:

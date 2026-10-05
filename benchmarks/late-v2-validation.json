@@ -1,0 +1,1593 @@
+{
+  "date": "2026-10-01",
+  "runtime": "Python 3.12, torch 2.8 CPU, Ultralytics 8.4.165 source",
+  "pipeline_exit_code": 0,
+  "frames_verified": 1321,
+  "validation_note": "Pipeline completed. Initial report writer failed on duplicate track_id key; corrected postprocessing verified existing videos and evidence without rerunning inference.",
+  "vehicle_conf": 0.3,
+  "traffic_light_conf": 0.25,
+  "anchor": "((x1+x2)/2, y2-20)",
+  "note": "Predictions only; no labeled precision/recall.",
+  "results": [
+    {
+      "camera_id": "cam_01",
+      "frames": 192,
+      "video": "C:\\Users\\Admin\\Documents\\Codex\\2026-09-29\\files-pasted-by-the-user-vai\\outputs\\red_light_violation\\output\\late_v2_20261001_132932\\cam_01\\videos\\cam_01_20261001_132935_88f95269359e_001.mp4",
+      "events": [
+        {
+          "id": "dfaa6af5227545e7aaeda9b99f88a36d",
+          "camera_id": "cam_01",
+          "track_id": 28,
+          "timestamp": "2026-10-01T06:29:38.435573+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 1.6579091435185185,
+          "sequence": 6,
+          "observed_crossing": false,
+          "first_seconds": 1.326327314814815,
+          "decision_seconds": 1.6579091435185185,
+          "first_sequence": 5,
+          "decision_sequence": 6,
+          "first_bbox": [
+            1139,
+            538,
+            1241,
+            739
+          ],
+          "first_distance_after_line_px": 105.55505896399609,
+          "forward_progress_px": 33.396567343048645,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "PREVIOUSLY_BEFORE_LINE"
+        },
+        {
+          "id": "e126b21e4cf243b0beda13b5122d9562",
+          "camera_id": "cam_01",
+          "track_id": 38,
+          "timestamp": "2026-10-01T06:29:38.435573+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 1.6579091435185185,
+          "sequence": 6,
+          "observed_crossing": false,
+          "first_seconds": 1.326327314814815,
+          "decision_seconds": 1.6579091435185185,
+          "first_sequence": 5,
+          "decision_sequence": 6,
+          "first_bbox": [
+            6,
+            551,
+            47,
+            818
+          ],
+          "first_distance_after_line_px": 118.91802307304971,
+          "forward_progress_px": 49.407615810850075,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "eea3bbef68774296bf7068c384969b4f",
+          "camera_id": "cam_01",
+          "track_id": 42,
+          "timestamp": "2026-10-01T06:29:40.806365+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 2.65265462962963,
+          "sequence": 9
+        },
+        {
+          "id": "5f581a7004f74df7a00db0548098cc55",
+          "camera_id": "cam_01",
+          "track_id": 62,
+          "timestamp": "2026-10-01T06:29:44.469377+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 4.310563773148148,
+          "sequence": 14
+        },
+        {
+          "id": "87b88b87ed7a4779a91aab22e85be187",
+          "camera_id": "cam_01",
+          "track_id": 63,
+          "timestamp": "2026-10-01T06:29:44.469377+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 4.310563773148148,
+          "sequence": 14,
+          "observed_crossing": false,
+          "first_seconds": 3.9789819444444445,
+          "decision_seconds": 4.310563773148148,
+          "first_sequence": 13,
+          "decision_sequence": 14,
+          "first_bbox": [
+            538,
+            582,
+            651,
+            835
+          ],
+          "first_distance_after_line_px": 57.002485600452594,
+          "forward_progress_px": 66.70329326953245,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "c085db8358684346bd79fa5199b50d5a",
+          "camera_id": "cam_01",
+          "track_id": 39,
+          "timestamp": "2026-10-01T06:29:44.469377+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 4.310563773148148,
+          "sequence": 14,
+          "observed_crossing": false,
+          "first_seconds": 3.9789819444444445,
+          "decision_seconds": 4.310563773148148,
+          "first_sequence": 13,
+          "decision_sequence": 14,
+          "first_bbox": [
+            1361,
+            616,
+            1416,
+            824
+          ],
+          "first_distance_after_line_px": 5.1065035047477,
+          "forward_progress_px": 22.826948427188654,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "PREVIOUSLY_BEFORE_LINE"
+        },
+        {
+          "id": "28dfb2bfdfac41f9983a3e5b77443d78",
+          "camera_id": "cam_01",
+          "track_id": 68,
+          "timestamp": "2026-10-01T06:29:46.807545+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 5.6368910879629635,
+          "sequence": 18
+        },
+        {
+          "id": "d72c4120926b483082845e6d3b0594a0",
+          "camera_id": "cam_01",
+          "track_id": 82,
+          "timestamp": "2026-10-01T06:29:46.807545+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 5.6368910879629635,
+          "sequence": 18,
+          "observed_crossing": false,
+          "first_seconds": 5.30530925925926,
+          "decision_seconds": 5.6368910879629635,
+          "first_sequence": 17,
+          "decision_sequence": 18,
+          "first_bbox": [
+            10,
+            646,
+            46,
+            922
+          ],
+          "first_distance_after_line_px": 15.125714661653078,
+          "forward_progress_px": 74.81139505951101,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "9a895ff941364e32b9bd591c48dbf5bb",
+          "camera_id": "cam_01",
+          "track_id": 83,
+          "timestamp": "2026-10-01T06:29:47.603692+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 5.968472916666667,
+          "sequence": 19,
+          "observed_crossing": false,
+          "first_seconds": 5.30530925925926,
+          "decision_seconds": 5.968472916666667,
+          "first_sequence": 17,
+          "decision_sequence": 19,
+          "first_bbox": [
+            1145,
+            485,
+            1252,
+            703
+          ],
+          "first_distance_after_line_px": 140.7691078375515,
+          "forward_progress_px": 31.006992194416426,
+          "observations": 3,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "b91ad6e0a4e1439792a7aeca45d6c41e",
+          "camera_id": "cam_01",
+          "track_id": 97,
+          "timestamp": "2026-10-01T06:29:48.623561+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 6.631636574074074,
+          "sequence": 21,
+          "observed_crossing": false,
+          "first_seconds": 6.30005474537037,
+          "decision_seconds": 6.631636574074074,
+          "first_sequence": 20,
+          "decision_sequence": 21,
+          "first_bbox": [
+            449,
+            627,
+            559,
+            881
+          ],
+          "first_distance_after_line_px": 18.31181485982933,
+          "forward_progress_px": 90.4300327423167,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "2f6d897b5655403384067535c9742c36",
+          "camera_id": "cam_01",
+          "track_id": 108,
+          "timestamp": "2026-10-01T06:29:50.540401+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 7.626382060185185,
+          "sequence": 24,
+          "observed_crossing": false,
+          "first_seconds": 7.2948002314814815,
+          "decision_seconds": 7.626382060185185,
+          "first_sequence": 23,
+          "decision_sequence": 24,
+          "first_bbox": [
+            544,
+            637,
+            646,
+            878
+          ],
+          "first_distance_after_line_px": 14.097873780953607,
+          "forward_progress_px": 72.04386636533027,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "8220b75a044946afad8593c26c1c357e",
+          "camera_id": "cam_01",
+          "track_id": 112,
+          "timestamp": "2026-10-01T06:29:51.439337+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 7.957963888888889,
+          "sequence": 25,
+          "observed_crossing": false,
+          "first_seconds": 7.626382060185185,
+          "decision_seconds": 7.957963888888889,
+          "first_sequence": 24,
+          "decision_sequence": 25,
+          "first_bbox": [
+            5,
+            598,
+            42,
+            881
+          ],
+          "first_distance_after_line_px": 56.353286705275366,
+          "forward_progress_px": 78.15824599154081,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "95175031eff943128defb0905aa3900e",
+          "camera_id": "cam_01",
+          "track_id": 111,
+          "timestamp": "2026-10-01T06:29:51.926666+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 8.289545717592592,
+          "sequence": 26
+        },
+        {
+          "id": "1eeccaa8544142d4ac84224d7ba7e48f",
+          "camera_id": "cam_01",
+          "track_id": 114,
+          "timestamp": "2026-10-01T06:29:51.926666+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 8.289545717592592,
+          "sequence": 26
+        },
+        {
+          "id": "7ee9d6f7ec964564b24effd6f6d16c44",
+          "camera_id": "cam_01",
+          "track_id": 378,
+          "timestamp": "2026-10-01T06:30:34.504189+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 43.437219560185184,
+          "sequence": 132,
+          "observed_crossing": false,
+          "first_seconds": 43.10563773148148,
+          "decision_seconds": 43.437219560185184,
+          "first_sequence": 131,
+          "decision_sequence": 132,
+          "first_bbox": [
+            1100,
+            550,
+            1198,
+            754
+          ],
+          "first_distance_after_line_px": 93.84813721162203,
+          "forward_progress_px": 38.071418984300976,
+          "observations": 2,
+          "red_since_seconds": 41.77931041666667,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "1a5be27835d34524a6ee776f06684c0d",
+          "camera_id": "cam_01",
+          "track_id": 385,
+          "timestamp": "2026-10-01T06:30:39.041742+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 46.753037847222224,
+          "sequence": 142
+        },
+        {
+          "id": "68ab5208b1a74790996b7efeed158bf2",
+          "camera_id": "cam_01",
+          "track_id": 166,
+          "timestamp": "2026-10-01T06:30:44.530266+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 51.395183449074075,
+          "sequence": 156
+        },
+        {
+          "id": "607bc3bf196341bd92a56a380da1c4fa",
+          "camera_id": "cam_01",
+          "track_id": 407,
+          "timestamp": "2026-10-01T06:30:47.871718+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 54.047838078703705,
+          "sequence": 164,
+          "observed_crossing": false,
+          "first_seconds": 52.38992893518519,
+          "decision_seconds": 54.047838078703705,
+          "first_sequence": 159,
+          "decision_sequence": 164,
+          "first_bbox": [
+            1232,
+            601,
+            1367,
+            792
+          ],
+          "first_distance_after_line_px": 44.05224125561822,
+          "forward_progress_px": 28.368890215286932,
+          "observations": 6,
+          "red_since_seconds": 41.77931041666667,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "4698627d6a954986b105998e12d5c4bd",
+          "camera_id": "cam_01",
+          "track_id": 415,
+          "timestamp": "2026-10-01T06:30:51.980798+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 57.363656365740745,
+          "sequence": 174,
+          "observed_crossing": false,
+          "first_seconds": 56.700492708333336,
+          "decision_seconds": 57.363656365740745,
+          "first_sequence": 172,
+          "decision_sequence": 174,
+          "first_bbox": [
+            1158,
+            518,
+            1303,
+            729
+          ],
+          "first_distance_after_line_px": 112.3172606054365,
+          "forward_progress_px": 1.0364463803704353,
+          "observations": 3,
+          "red_since_seconds": 55.37416539351852,
+          "motion_basis": "STATIONARY_AFTER_LINE",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "f2c5c854d93949448c71a79fa28e95d7",
+          "camera_id": "cam_01",
+          "track_id": 310,
+          "timestamp": "2026-10-01T06:30:55.043201+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 59.68472916666667,
+          "sequence": 181
+        },
+        {
+          "id": "e89fd6fe6e3b45acbabd2439249189d4",
+          "camera_id": "cam_01",
+          "track_id": 425,
+          "timestamp": "2026-10-01T06:30:57.045261+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 61.34263831018519,
+          "sequence": 186
+        },
+        {
+          "id": "861d565b9fac406ab53cbc68b9b0b3fc",
+          "camera_id": "cam_01",
+          "track_id": 430,
+          "timestamp": "2026-10-01T06:30:57.045261+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 61.34263831018519,
+          "sequence": 186
+        },
+        {
+          "id": "9b990db6ecec4030a25976e433d7e3af",
+          "camera_id": "cam_01",
+          "track_id": 389,
+          "timestamp": "2026-10-01T06:30:57.847814+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 61.67422013888889,
+          "sequence": 187
+        },
+        {
+          "id": "61505960928f46d28d15e5084651da8a",
+          "camera_id": "cam_01",
+          "track_id": 439,
+          "timestamp": "2026-10-01T06:30:59.498576+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 62.668965625,
+          "sequence": 190
+        },
+        {
+          "id": "c41d0af5301045448984a1cc7a4a9ba5",
+          "camera_id": "cam_01",
+          "track_id": 440,
+          "timestamp": "2026-10-01T06:31:00.536904+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 63.33212928240741,
+          "sequence": 192
+        },
+        {
+          "id": "22e34692c02343e2839247240d8cea0a",
+          "camera_id": "cam_01",
+          "track_id": 443,
+          "timestamp": "2026-10-01T06:31:00.536904+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 63.33212928240741,
+          "sequence": 192,
+          "observed_crossing": false,
+          "first_seconds": 62.668965625,
+          "decision_seconds": 63.33212928240741,
+          "first_sequence": 190,
+          "decision_sequence": 192,
+          "first_bbox": [
+            905,
+            605,
+            1029,
+            785
+          ],
+          "first_distance_after_line_px": 77.35449232227313,
+          "forward_progress_px": 22.81971980746505,
+          "observations": 3,
+          "red_since_seconds": 55.37416539351852,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        }
+      ],
+      "geometry": {
+        "point1": [
+          1453.0,
+          804.0
+        ],
+        "point2": [
+          5.0,
+          919.0
+        ],
+        "direction": "negative_to_positive",
+        "roi": [
+          1377,
+          214,
+          42,
+          190
+        ],
+        "polygon": [
+          [
+            9.0,
+            732.0
+          ],
+          [
+            1377.0,
+            590.0
+          ],
+          [
+            1599.0,
+            1094.0
+          ],
+          [
+            0.0,
+            1170.0
+          ]
+        ]
+      },
+      "effective": {
+        "late_detection_enabled": true,
+        "late_detection_band_height_ratio": 1.0,
+        "late_detection_min_red_seconds": 1.0,
+        "late_detection_require_forward_motion": false
+      }
+    },
+    {
+      "camera_id": "cam_02",
+      "frames": 384,
+      "video": "C:\\Users\\Admin\\Documents\\Codex\\2026-09-29\\files-pasted-by-the-user-vai\\outputs\\red_light_violation\\output\\late_v2_20261001_132932\\cam_02\\videos\\cam_02_20261001_132934_0ba7ebfbfca4_001.mp4",
+      "events": [
+        {
+          "id": "829b8a031a6b43409c07b2fd18a65585",
+          "camera_id": "cam_02",
+          "track_id": 49,
+          "timestamp": "2026-10-01T06:29:41.177937+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 1.8280905092592592,
+          "sequence": 12
+        },
+        {
+          "id": "e521b32c8f594551b3ec805819464d4b",
+          "camera_id": "cam_02",
+          "track_id": 137,
+          "timestamp": "2026-10-01T06:29:56.522360+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 7.146171990740741,
+          "sequence": 44
+        },
+        {
+          "id": "6482d3b4bd414c58aa2d356edc58f62b",
+          "camera_id": "cam_02",
+          "track_id": 257,
+          "timestamp": "2026-10-01T06:30:11.051229+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 13.295203703703704,
+          "sequence": 81
+        },
+        {
+          "id": "610d137cf96e4da09ee3a3f290df6d59",
+          "camera_id": "cam_02",
+          "track_id": 271,
+          "timestamp": "2026-10-01T06:30:12.528233+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 13.793773842592593,
+          "sequence": 84
+        },
+        {
+          "id": "b974854aad214dc29637c8299f5a4b80",
+          "camera_id": "cam_02",
+          "track_id": 174,
+          "timestamp": "2026-10-01T06:30:21.247659+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 17.44995486111111,
+          "sequence": 106
+        },
+        {
+          "id": "b9ec6eac3a014d229be478826ef9306f",
+          "camera_id": "cam_02",
+          "track_id": 307,
+          "timestamp": "2026-10-01T06:30:21.787347+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 17.616144907407406,
+          "sequence": 107
+        },
+        {
+          "id": "bd011125f9344397991e3e891f0a895a",
+          "camera_id": "cam_02",
+          "track_id": 492,
+          "timestamp": "2026-10-01T06:31:22.506579+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 45.36988263888889,
+          "sequence": 274
+        },
+        {
+          "id": "92c5b484407141828e09e262b7a4abbb",
+          "camera_id": "cam_02",
+          "track_id": 496,
+          "timestamp": "2026-10-01T06:31:23.243731+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 45.70226273148148,
+          "sequence": 276
+        },
+        {
+          "id": "412315b4e7bf40f59f22408ccac56f8b",
+          "camera_id": "cam_02",
+          "track_id": 503,
+          "timestamp": "2026-10-01T06:31:25.322790+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 46.86559305555556,
+          "sequence": 283
+        },
+        {
+          "id": "fafe6fca7b804a72957f64c2788ffdea",
+          "camera_id": "cam_02",
+          "track_id": 508,
+          "timestamp": "2026-10-01T06:31:27.395149+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 48.02892337962963,
+          "sequence": 290
+        },
+        {
+          "id": "921252072a8348adbd42e17501cff77e",
+          "camera_id": "cam_02",
+          "track_id": 520,
+          "timestamp": "2026-10-01T06:31:31.014945+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 50.18939398148148,
+          "sequence": 303
+        },
+        {
+          "id": "8dffe9c3bad74ac6b1e8b5867cfdfecc",
+          "camera_id": "cam_02",
+          "track_id": 597,
+          "timestamp": "2026-10-01T06:31:51.454123+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 62.32126736111111,
+          "sequence": 376
+        }
+      ],
+      "geometry": {
+        "point1": [
+          82.0,
+          378.0
+        ],
+        "point2": [
+          570.0,
+          397.0
+        ],
+        "direction": "positive_to_negative",
+        "roi": [
+          551,
+          151,
+          18,
+          79
+        ],
+        "polygon": [
+          [
+            199.0,
+            283.0
+          ],
+          [
+            527.0,
+            292.0
+          ],
+          [
+            603.0,
+            476.0
+          ],
+          [
+            94.0,
+            473.0
+          ]
+        ]
+      },
+      "effective": {
+        "late_detection_enabled": true,
+        "late_detection_band_height_ratio": 1.0,
+        "late_detection_min_red_seconds": 1.0,
+        "late_detection_require_forward_motion": false
+      }
+    },
+    {
+      "camera_id": "cam_03",
+      "frames": 384,
+      "video": "C:\\Users\\Admin\\Documents\\Codex\\2026-09-29\\files-pasted-by-the-user-vai\\outputs\\red_light_violation\\output\\late_v2_20261001_132932\\cam_03\\videos\\cam_03_20261001_132934_5d941904d4c6_001.mp4",
+      "events": [
+        {
+          "id": "67828ce2c2e14fb89977064c962fee6e",
+          "camera_id": "cam_03",
+          "track_id": 301,
+          "timestamp": "2026-10-01T06:30:19.649837+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 17.285570370370372,
+          "sequence": 105,
+          "observed_crossing": false,
+          "first_seconds": 16.953155555555558,
+          "decision_seconds": 17.285570370370372,
+          "first_sequence": 103,
+          "decision_sequence": 105,
+          "first_bbox": [
+            460,
+            249,
+            496,
+            328
+          ],
+          "first_distance_after_line_px": 47.84442760144828,
+          "forward_progress_px": 0.998928395709406,
+          "observations": 3,
+          "red_since_seconds": 0.0,
+          "motion_basis": "STATIONARY_AFTER_LINE",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "bf4ac034265f460b9e479454b9c555df",
+          "camera_id": "cam_03",
+          "track_id": 381,
+          "timestamp": "2026-10-01T06:30:35.141259+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 23.76765925925926,
+          "sequence": 144,
+          "observed_crossing": false,
+          "first_seconds": 23.601451851851852,
+          "decision_seconds": 23.76765925925926,
+          "first_sequence": 143,
+          "decision_sequence": 144,
+          "first_bbox": [
+            19,
+            228,
+            56,
+            304
+          ],
+          "first_distance_after_line_px": 51.43131334665964,
+          "forward_progress_px": 7.594169927227057,
+          "observations": 2,
+          "red_since_seconds": 0.0,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "4ff824c4afc74902a39eddd8ec40af00",
+          "camera_id": "cam_03",
+          "track_id": 13,
+          "timestamp": "2026-10-01T06:30:56.402473+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 32.74285925925926,
+          "sequence": 198
+        },
+        {
+          "id": "c28900e71b7a4afea4236578a23fcb91",
+          "camera_id": "cam_03",
+          "track_id": 12,
+          "timestamp": "2026-10-01T06:30:56.889504+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 32.90906666666667,
+          "sequence": 199
+        },
+        {
+          "id": "2162186c5d474b5d9e82d9599f117294",
+          "camera_id": "cam_03",
+          "track_id": 141,
+          "timestamp": "2026-10-01T06:30:57.913485+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 33.241481481481486,
+          "sequence": 201
+        },
+        {
+          "id": "2ff51ac5c4af425e92911c5acecd3c1f",
+          "camera_id": "cam_03",
+          "track_id": 422,
+          "timestamp": "2026-10-01T06:30:57.913485+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 33.241481481481486,
+          "sequence": 201
+        },
+        {
+          "id": "8bfff3702626469b810f50a89502f119",
+          "camera_id": "cam_03",
+          "track_id": 302,
+          "timestamp": "2026-10-01T06:31:00.409237+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 34.07251851851852,
+          "sequence": 206
+        },
+        {
+          "id": "cd57b84c31834466a052bd7c051ec5e2",
+          "camera_id": "cam_03",
+          "track_id": 17,
+          "timestamp": "2026-10-01T06:31:01.443905+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 34.40493333333333,
+          "sequence": 208
+        },
+        {
+          "id": "a316ff515c054584a27af8a097b2e101",
+          "camera_id": "cam_03",
+          "track_id": 448,
+          "timestamp": "2026-10-01T06:31:02.041047+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 34.73734814814815,
+          "sequence": 210,
+          "observed_crossing": false,
+          "first_seconds": 34.40493333333333,
+          "decision_seconds": 34.73734814814815,
+          "first_sequence": 208,
+          "decision_sequence": 210,
+          "first_bbox": [
+            403,
+            265,
+            438,
+            347
+          ],
+          "first_distance_after_line_px": 26.20355027200642,
+          "forward_progress_px": 4.111419574618612,
+          "observations": 3,
+          "red_since_seconds": 0.0,
+          "motion_basis": "STATIONARY_AFTER_LINE",
+          "candidate_basis": "FIRST_SEEN_RED"
+        },
+        {
+          "id": "93f055d4e22b46b998fc1e2d6d27ef05",
+          "camera_id": "cam_03",
+          "track_id": 15,
+          "timestamp": "2026-10-01T06:31:05.098439+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 35.73459259259259,
+          "sequence": 216
+        }
+      ],
+      "geometry": {
+        "point1": [
+          27.0,
+          335.0
+        ],
+        "point2": [
+          545.0,
+          359.0
+        ],
+        "direction": "positive_to_negative",
+        "roi": [
+          614,
+          146,
+          19,
+          73
+        ],
+        "polygon": [
+          [
+            38.0,
+            245.0
+          ],
+          [
+            493.0,
+            265.0
+          ],
+          [
+            615.0,
+            478.0
+          ],
+          [
+            0.0,
+            479.0
+          ]
+        ]
+      },
+      "effective": {
+        "late_detection_enabled": true,
+        "late_detection_band_height_ratio": 1.0,
+        "late_detection_min_red_seconds": 1.0,
+        "late_detection_require_forward_motion": false
+      }
+    },
+    {
+      "camera_id": "cam_04",
+      "frames": 361,
+      "video": "C:\\Users\\Admin\\Documents\\Codex\\2026-09-29\\files-pasted-by-the-user-vai\\outputs\\red_light_violation\\output\\late_v2_20261001_132932\\cam_04\\videos\\cam_04_20261001_132934_e43f57d50ac1_001.mp4",
+      "events": [
+        {
+          "id": "7e01ffee6945444589f0ae4763afc3b3",
+          "camera_id": "cam_04",
+          "track_id": 255,
+          "timestamp": "2026-10-01T06:30:09.648081+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 13.144333179439828,
+          "sequence": 80
+        },
+        {
+          "id": "05279512507d47169820a91aea49af31",
+          "camera_id": "cam_04",
+          "track_id": 383,
+          "timestamp": "2026-10-01T06:30:42.276428+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 26.95420221606648,
+          "sequence": 163,
+          "observed_crossing": false,
+          "first_seconds": 26.62143428747307,
+          "decision_seconds": 26.95420221606648,
+          "first_sequence": 161,
+          "decision_sequence": 163,
+          "first_bbox": [
+            289,
+            294,
+            329,
+            370
+          ],
+          "first_distance_after_line_px": 14.488998478952123,
+          "forward_progress_px": 6.253423677659118,
+          "observations": 3,
+          "red_since_seconds": 12.312413357956293,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "PREVIOUSLY_BEFORE_LINE"
+        },
+        {
+          "id": "8b95ff34e7714911a9f7dcb734b460c1",
+          "camera_id": "cam_04",
+          "track_id": 396,
+          "timestamp": "2026-10-01T06:30:50.844144+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 30.614649430594028,
+          "sequence": 185
+        },
+        {
+          "id": "105cb7e43c97488793b052134c8dbc3e",
+          "camera_id": "cam_04",
+          "track_id": 411,
+          "timestamp": "2026-10-01T06:30:52.047364+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 31.11380132348415,
+          "sequence": 188
+        },
+        {
+          "id": "42052f9f427b46f1afb2a4ec67a05709",
+          "camera_id": "cam_04",
+          "track_id": 423,
+          "timestamp": "2026-10-01T06:30:57.606541+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 33.276792859341334,
+          "sequence": 201
+        },
+        {
+          "id": "5af3190d962448b3b63a67baeb63eaf5",
+          "camera_id": "cam_04",
+          "track_id": 386,
+          "timestamp": "2026-10-01T06:31:18.780511+00:00",
+          "reason": "DIRECT_LINE_CROSSING",
+          "source_seconds": 44.09175053862727,
+          "sequence": 266
+        },
+        {
+          "id": "bb8e2ba2041847c28db74e016add7735",
+          "camera_id": "cam_04",
+          "track_id": 484,
+          "timestamp": "2026-10-01T06:31:23.050210+00:00",
+          "reason": "LATE_DETECTION_AFTER_LINE",
+          "source_seconds": 46.08835811018775,
+          "sequence": 278,
+          "observed_crossing": false,
+          "first_seconds": 45.755590181594336,
+          "decision_seconds": 46.08835811018775,
+          "first_sequence": 276,
+          "decision_sequence": 278,
+          "first_bbox": [
+            229,
+            295,
+            265,
+            374
+          ],
+          "first_distance_after_line_px": 9.402061966971353,
+          "forward_progress_px": 10.20895534473382,
+          "observations": 3,
+          "red_since_seconds": 12.312413357956293,
+          "motion_basis": "FORWARD",
+          "candidate_basis": "PREVIOUSLY_BEFORE_LINE"
+        }
+      ],
+      "geometry": {
+        "point1": [
+          53.0,
+          360.0
+        ],
+        "point2": [
+          623.0,
+          370.0
+        ],
+        "direction": "positive_to_negative",
+        "roi": [
+          617,
+          174,
+          17,
+          83
+        ],
+        "polygon": [
+          [
+            242.0,
+            276.0
+          ],
+          [
+            606.0,
+            281.0
+          ],
+          [
+            638.0,
+            474.0
+          ],
+          [
+            147.0,
+            476.0
+          ]
+        ]
+      },
+      "effective": {
+        "late_detection_enabled": true,
+        "late_detection_band_height_ratio": 1.0,
+        "late_detection_min_red_seconds": 1.0,
+        "late_detection_require_forward_motion": false
+      }
+    }
+  ],
+  "cam01_single": {
+    "video": "C:\\Users\\Admin\\Documents\\Codex\\2026-09-29\\files-pasted-by-the-user-vai\\outputs\\red_light_violation\\output\\late_v2_cam01_20261001_133242\\cam_01\\videos\\cam_01_20261001_133245_52f038806297_001.mp4",
+    "frames": 192,
+    "fully_decoded": true,
+    "before": [
+      {
+        "id": 14,
+        "frame": 8,
+        "seconds": 2.65265462962963,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 25,
+        "frame": 13,
+        "seconds": 4.310563773148148,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 26,
+        "frame": 14,
+        "seconds": 4.642145601851852,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 3.9789819444444445,
+        "decision_seconds": 4.642145601851852,
+        "first_sequence": 13,
+        "decision_sequence": 15,
+        "first_bbox": [
+          538,
+          582,
+          651,
+          835
+        ],
+        "first_distance_after_line_px": 57.002485600452594,
+        "forward_progress_px": 142.18040978358894,
+        "observations": 3,
+        "red_since_seconds": 1.326327314814815,
+        "motion_basis": "FORWARD"
+      },
+      {
+        "id": 29,
+        "frame": 17,
+        "seconds": 5.6368910879629635,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 34,
+        "frame": 18,
+        "seconds": 5.968472916666667,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 5.30530925925926,
+        "decision_seconds": 5.968472916666667,
+        "first_sequence": 17,
+        "decision_sequence": 19,
+        "first_bbox": [
+          10,
+          646,
+          46,
+          922
+        ],
+        "first_distance_after_line_px": 15.125714661653078,
+        "forward_progress_px": 144.7248839262984,
+        "observations": 3,
+        "red_since_seconds": 1.326327314814815,
+        "motion_basis": "FORWARD"
+      },
+      {
+        "id": 35,
+        "frame": 18,
+        "seconds": 5.968472916666667,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 5.30530925925926,
+        "decision_seconds": 5.968472916666667,
+        "first_sequence": 17,
+        "decision_sequence": 19,
+        "first_bbox": [
+          1145,
+          485,
+          1252,
+          703
+        ],
+        "first_distance_after_line_px": 140.7691078375515,
+        "forward_progress_px": 31.006992194416426,
+        "observations": 3,
+        "red_since_seconds": 1.326327314814815,
+        "motion_basis": "FORWARD"
+      },
+      {
+        "id": 38,
+        "frame": 21,
+        "seconds": 6.963218402777778,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 6.30005474537037,
+        "decision_seconds": 6.963218402777778,
+        "first_sequence": 20,
+        "decision_sequence": 22,
+        "first_bbox": [
+          449,
+          627,
+          559,
+          881
+        ],
+        "first_distance_after_line_px": 18.31181485982933,
+        "forward_progress_px": 168.3831236217018,
+        "observations": 3,
+        "red_since_seconds": 1.326327314814815,
+        "motion_basis": "FORWARD"
+      },
+      {
+        "id": 40,
+        "frame": 24,
+        "seconds": 7.957963888888889,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 7.2948002314814815,
+        "decision_seconds": 7.957963888888889,
+        "first_sequence": 23,
+        "decision_sequence": 25,
+        "first_bbox": [
+          544,
+          637,
+          646,
+          878
+        ],
+        "first_distance_after_line_px": 14.097873780953607,
+        "forward_progress_px": 155.97089511629585,
+        "observations": 3,
+        "red_since_seconds": 1.326327314814815,
+        "motion_basis": "FORWARD"
+      },
+      {
+        "id": 41,
+        "frame": 25,
+        "seconds": 8.289545717592592,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 43,
+        "frame": 25,
+        "seconds": 8.289545717592592,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 192,
+        "frame": 141,
+        "seconds": 46.753037847222224,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 71,
+        "frame": 155,
+        "seconds": 51.395183449074075,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 162,
+        "frame": 180,
+        "seconds": 59.68472916666667,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 204,
+        "frame": 185,
+        "seconds": 61.34263831018519,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 207,
+        "frame": 185,
+        "seconds": 61.34263831018519,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 193,
+        "frame": 186,
+        "seconds": 61.67422013888889,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 210,
+        "frame": 189,
+        "seconds": 62.668965625,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 211,
+        "frame": 191,
+        "seconds": 63.33212928240741,
+        "reason": "DIRECT"
+      }
+    ],
+    "after": [
+      {
+        "id": 9,
+        "frame": 5,
+        "seconds": 1.6579091435185185,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 1.326327314814815,
+        "decision_seconds": 1.6579091435185185,
+        "first_sequence": 5,
+        "decision_sequence": 6,
+        "first_bbox": [
+          1139,
+          538,
+          1241,
+          739
+        ],
+        "first_distance_after_line_px": 105.55505896399609,
+        "forward_progress_px": 33.396567343048645,
+        "observations": 2,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "PREVIOUSLY_BEFORE_LINE"
+      },
+      {
+        "id": 12,
+        "frame": 5,
+        "seconds": 1.6579091435185185,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 1.326327314814815,
+        "decision_seconds": 1.6579091435185185,
+        "first_sequence": 5,
+        "decision_sequence": 6,
+        "first_bbox": [
+          6,
+          551,
+          47,
+          818
+        ],
+        "first_distance_after_line_px": 118.91802307304971,
+        "forward_progress_px": 49.407615810850075,
+        "observations": 2,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 14,
+        "frame": 8,
+        "seconds": 2.65265462962963,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 25,
+        "frame": 13,
+        "seconds": 4.310563773148148,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 26,
+        "frame": 13,
+        "seconds": 4.310563773148148,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 3.9789819444444445,
+        "decision_seconds": 4.310563773148148,
+        "first_sequence": 13,
+        "decision_sequence": 14,
+        "first_bbox": [
+          538,
+          582,
+          651,
+          835
+        ],
+        "first_distance_after_line_px": 57.002485600452594,
+        "forward_progress_px": 66.70329326953245,
+        "observations": 2,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 13,
+        "frame": 13,
+        "seconds": 4.310563773148148,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 3.9789819444444445,
+        "decision_seconds": 4.310563773148148,
+        "first_sequence": 13,
+        "decision_sequence": 14,
+        "first_bbox": [
+          1361,
+          616,
+          1416,
+          824
+        ],
+        "first_distance_after_line_px": 5.1065035047477,
+        "forward_progress_px": 22.826948427188654,
+        "observations": 2,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "PREVIOUSLY_BEFORE_LINE"
+      },
+      {
+        "id": 29,
+        "frame": 17,
+        "seconds": 5.6368910879629635,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 34,
+        "frame": 17,
+        "seconds": 5.6368910879629635,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 5.30530925925926,
+        "decision_seconds": 5.6368910879629635,
+        "first_sequence": 17,
+        "decision_sequence": 18,
+        "first_bbox": [
+          10,
+          646,
+          46,
+          922
+        ],
+        "first_distance_after_line_px": 15.125714661653078,
+        "forward_progress_px": 74.81139505951101,
+        "observations": 2,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 35,
+        "frame": 18,
+        "seconds": 5.968472916666667,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 5.30530925925926,
+        "decision_seconds": 5.968472916666667,
+        "first_sequence": 17,
+        "decision_sequence": 19,
+        "first_bbox": [
+          1145,
+          485,
+          1252,
+          703
+        ],
+        "first_distance_after_line_px": 140.7691078375515,
+        "forward_progress_px": 31.006992194416426,
+        "observations": 3,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 38,
+        "frame": 20,
+        "seconds": 6.631636574074074,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 6.30005474537037,
+        "decision_seconds": 6.631636574074074,
+        "first_sequence": 20,
+        "decision_sequence": 21,
+        "first_bbox": [
+          449,
+          627,
+          559,
+          881
+        ],
+        "first_distance_after_line_px": 18.31181485982933,
+        "forward_progress_px": 90.4300327423167,
+        "observations": 2,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 40,
+        "frame": 23,
+        "seconds": 7.626382060185185,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 7.2948002314814815,
+        "decision_seconds": 7.626382060185185,
+        "first_sequence": 23,
+        "decision_sequence": 24,
+        "first_bbox": [
+          544,
+          637,
+          646,
+          878
+        ],
+        "first_distance_after_line_px": 14.097873780953607,
+        "forward_progress_px": 72.04386636533027,
+        "observations": 2,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 42,
+        "frame": 24,
+        "seconds": 7.957963888888889,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 7.626382060185185,
+        "decision_seconds": 7.957963888888889,
+        "first_sequence": 24,
+        "decision_sequence": 25,
+        "first_bbox": [
+          5,
+          598,
+          42,
+          881
+        ],
+        "first_distance_after_line_px": 56.353286705275366,
+        "forward_progress_px": 78.15824599154081,
+        "observations": 2,
+        "red_since_seconds": 0.0,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 41,
+        "frame": 25,
+        "seconds": 8.289545717592592,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 43,
+        "frame": 25,
+        "seconds": 8.289545717592592,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 191,
+        "frame": 131,
+        "seconds": 43.437219560185184,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 43.10563773148148,
+        "decision_seconds": 43.437219560185184,
+        "first_sequence": 131,
+        "decision_sequence": 132,
+        "first_bbox": [
+          1100,
+          550,
+          1198,
+          754
+        ],
+        "first_distance_after_line_px": 93.84813721162203,
+        "forward_progress_px": 38.071418984300976,
+        "observations": 2,
+        "red_since_seconds": 41.77931041666667,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 192,
+        "frame": 141,
+        "seconds": 46.753037847222224,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 71,
+        "frame": 155,
+        "seconds": 51.395183449074075,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 198,
+        "frame": 163,
+        "seconds": 54.047838078703705,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 52.38992893518519,
+        "decision_seconds": 54.047838078703705,
+        "first_sequence": 159,
+        "decision_sequence": 164,
+        "first_bbox": [
+          1232,
+          601,
+          1367,
+          792
+        ],
+        "first_distance_after_line_px": 44.05224125561822,
+        "forward_progress_px": 28.368890215286932,
+        "observations": 6,
+        "red_since_seconds": 41.77931041666667,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 201,
+        "frame": 173,
+        "seconds": 57.363656365740745,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 56.700492708333336,
+        "decision_seconds": 57.363656365740745,
+        "first_sequence": 172,
+        "decision_sequence": 174,
+        "first_bbox": [
+          1158,
+          518,
+          1303,
+          729
+        ],
+        "first_distance_after_line_px": 112.3172606054365,
+        "forward_progress_px": 1.0364463803704353,
+        "observations": 3,
+        "red_since_seconds": 55.37416539351852,
+        "motion_basis": "STATIONARY_AFTER_LINE",
+        "candidate_basis": "FIRST_SEEN_RED"
+      },
+      {
+        "id": 162,
+        "frame": 180,
+        "seconds": 59.68472916666667,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 204,
+        "frame": 185,
+        "seconds": 61.34263831018519,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 207,
+        "frame": 185,
+        "seconds": 61.34263831018519,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 193,
+        "frame": 186,
+        "seconds": 61.67422013888889,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 210,
+        "frame": 189,
+        "seconds": 62.668965625,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 211,
+        "frame": 191,
+        "seconds": 63.33212928240741,
+        "reason": "DIRECT"
+      },
+      {
+        "id": 213,
+        "frame": 191,
+        "seconds": 63.33212928240741,
+        "reason": "LATE",
+        "observed_crossing": false,
+        "first_seconds": 62.668965625,
+        "decision_seconds": 63.33212928240741,
+        "first_sequence": 190,
+        "decision_sequence": 192,
+        "first_bbox": [
+          905,
+          605,
+          1029,
+          785
+        ],
+        "first_distance_after_line_px": 77.35449232227313,
+        "forward_progress_px": 22.81971980746505,
+        "observations": 3,
+        "red_since_seconds": 55.37416539351852,
+        "motion_basis": "FORWARD",
+        "candidate_basis": "FIRST_SEEN_RED"
+      }
+    ],
+    "comparison": "Identical fresh YOLO/ByteTrack/light observations, same current line and y2-20 point; replay only the previous/current late policy. Current replay matches all real controller events.",
+    "intervals": [
+      {
+        "name": "first_10_seconds",
+        "before": 10,
+        "after": 14
+      },
+      {
+        "name": "last_5_seconds",
+        "before": 6,
+        "after": 7
+      }
+    ]
+  }
+}

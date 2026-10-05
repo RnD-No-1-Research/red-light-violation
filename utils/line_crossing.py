@@ -2,6 +2,8 @@
 
 from dataclasses import dataclass
 
+from utils.box_motion import box_motion_issue
+
 Point = tuple[float, float]
 
 
@@ -52,6 +54,8 @@ class Observation:
     point: Point
     frame_index: int
     contact: Point | None = None
+    bbox: tuple[int, int, int, int] | None = None
+    class_name: str | None = None
 
 
 class LineCrossing:
@@ -63,10 +67,21 @@ class LineCrossing:
         self.direction = direction
         self.previous: dict[int, Observation] = {}
         self.recorded: set[int] = set()
+        self.last_rejection: str | None = None
 
-    def update(self, track_id: int, point: Point, frame_index: int, light: str) -> bool:
+    def update(
+        self,
+        track_id: int,
+        point: Point,
+        frame_index: int,
+        light: str,
+        *,
+        bbox: tuple[int, int, int, int] | None = None,
+        class_name: str | None = None,
+    ) -> bool:
         """Xét cắt vạch ở hai lần quan sát liên tiếp và đèn đỏ hiện tại."""
         old = self.previous.get(track_id)
+        self.last_rejection = None
         consecutive = old is not None and old.frame_index == frame_index - 1
         crossed = bool(
             consecutive
@@ -95,7 +110,23 @@ class LineCrossing:
             else point
         )
         contact = point if signed_side(point, self.start, self.end) == 0 else None
-        self.previous[track_id] = Observation(anchor, frame_index, contact)
+        if crossed and old.bbox is not None and bbox is not None:
+            self.last_rejection = (
+                "class_changed"
+                if old.class_name != class_name
+                else box_motion_issue(
+                    old.bbox, bbox, self.start, self.end, self.direction
+                )
+            )
+            if self.last_rejection:
+                crossed = False
+        anchor_box = old.bbox if consecutive and contact is not None else bbox
+        anchor_class = (
+            old.class_name if consecutive and contact is not None else class_name
+        )
+        self.previous[track_id] = Observation(
+            anchor, frame_index, contact, anchor_box, anchor_class
+        )
         if crossed and light == "RED" and track_id not in self.recorded:
             self.recorded.add(track_id)
             return True
@@ -113,3 +144,4 @@ class LineCrossing:
         """Xóa lịch sử vị trí và ID khi tạo phiên RTSP mới."""
         self.previous.clear()
         self.recorded.clear()
+        self.last_rejection = None

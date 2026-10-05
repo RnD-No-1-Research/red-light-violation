@@ -4,44 +4,45 @@ cameras:
   source: data/videos/vid_1.mp4
   stop_line:
     point1:
-    - 1420
-    - 797
+    - 1453
+    - 804
     point2:
-    - 0
-    - 914
+    - 5
+    - 919
   crossing_direction: negative_to_positive
   traffic_light_roi:
-  - 1371
-  - 213
-  - 58
-  - 194
+  - 1377
+  - 214
+  - 42
+  - 190
   enabled: true
   detection_polygon:
-  - - 9
-    - 732
-  - - 1377
-    - 590
-  - - 1599
-    - 1094
-  - - 0
+  - - 7
+    - 548
+  - - 1312
+    - 456
+  - - 1593
+    - 992
+  - - 1588
     - 1170
+  - - 4
+    - 1172
 - camera_id: cam_02
   name: Camera video 2
   source: data/videos/vid_2.mp4
   stop_line:
     point1:
-    - 186
-    - 384
+    - 82
+    - 378
     point2:
-    - 540
-    - 396
+    - 570
+    - 397
   crossing_direction: positive_to_negative
   traffic_light_roi:
   - 551
-  - 146
-  - 19
-  - 88
-  # Chỉ thử cụm bóng đèn với viền đệm khi ROI chính trả UNKNOWN.
+  - 151
+  - 18
+  - 79
   traffic_light_fallback_roi:
   - 547
   - 177
@@ -58,6 +59,70 @@ cameras:
     - 476
   - - 94
     - 473
+- camera_id: cam_03
+  name: Camera video 3
+  source: data/videos/vid_3.mp4
+  stop_line:
+    point1:
+    - 27
+    - 335
+    point2:
+    - 545
+    - 359
+  crossing_direction: positive_to_negative
+  traffic_light_roi:
+  - 614
+  - 146
+  - 19
+  - 73
+  traffic_light_fallback_roi:
+  - 612
+  - 170
+  - 24
+  - 49
+  traffic_light_canvas_size: 256
+  detection_polygon:
+  - - 38
+    - 245
+  - - 493
+    - 265
+  - - 615
+    - 478
+  - - 0
+    - 479
+  enabled: true
+- camera_id: cam_04
+  name: Camera video 4
+  source: data/videos/vid_4.mp4
+  stop_line:
+    point1:
+    - 53
+    - 360
+    point2:
+    - 623
+    - 370
+  crossing_direction: positive_to_negative
+  traffic_light_roi:
+  - 617
+  - 174
+  - 17
+  - 83
+  traffic_light_fallback_roi:
+  - 614
+  - 200
+  - 26
+  - 55
+  traffic_light_canvas_size: 256
+  detection_polygon:
+  - - 242
+    - 276
+  - - 606
+    - 281
+  - - 638
+    - 474
+  - - 147
+    - 476
+  enabled: true
 - camera_id: cam_rtsp
   name: Camera IP
   source: ${CAM_RTSP_URL}
