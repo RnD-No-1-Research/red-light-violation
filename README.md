@@ -48,14 +48,23 @@ Hướng giải quyết:
 
 #Chức năng của các file chính
 main.py: Đọc tham số chạy, cấu hình và khởi động
+
 controllers/camera_manager.py:	Quản lý worker từng camera và hiển thị
+
 controllers/violation_controller.py:	Điều phối xử lý mỗi frame, quyết định nhánh sự kiện
+
 utils/video_source.py: Đọc video/RTSP, thời gian và phiên nguồn
+
 models/vehicle_detector.py: YOLO phương tiện, lọc polygon, ByteTrack
+
 models/traffic_light_detector.py + utils/light_state.py: Nhận diện và làm mượt màu đèn
+
 utils/line_crossing.py + utils/box_motion.py: Kiểm tra cắt vạch và biến dạng bbox
+
 utils/occlusion_review.py:	Xét nghi vấn khi mất dấu ngắn
+
 views/display.py:	Vẽ bbox, ghi video, ảnh và CSV
+
 
 #BenchMark 
 1. CPU:AMD Ryzen 5 4600H with Radeon Graphics
