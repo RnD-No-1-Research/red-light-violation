@@ -34,18 +34,27 @@ Hướng giải quyết:
 6. Phân loại kết quả
    
    TH1: Vi phạm trực tiếp, xe có cùng ID ở các frame liên tiếp, cắt vạch theo chiều quy định, đèn được detect là RED. Kết quả là tạo bbox đở và event vi phạm
-   
+
+ <img width="1267" height="812" alt="image" src="https://github.com/user-attachments/assets/9ed00eec-16c3-4050-9301-77c0ce813790" />
+
    TH2: Nghi vấn do mất track, xe có cùng ID, xuất hiện lại trong tối đa 1s , đèn được detect là RED. Kết quả tạo bbox cam, lưu evidence để xem lại. ( trường hợp này xảy ra khi 2 xe đi quá sát nhau dẫn tới trường hợp ngộp bbox và làm mất ID của 1 xe)
+
+   TH3: Phương tiện xuất hiện sẵn sau vạch khi bắt đầu camera và đèn được báo là RED: Lúc này sẽ xét trường hợp xem đèn đã ổn định là RED được từ một giấy trở lên hay chưa, và xét hướng di chuyển của xe cùng hướng với chiều xét vi phạm hay không, nếu cả 2 điều kiện trên được thoả mãn, thì xe sẽ bị xét là vi phạm, hiện box đỏ và bắn event
+
+   TH4: Xe được phát hiện muộn, đứng sau vạch nhưng chưa biết hướng : Lúc này sẽ hiện box màu cam sau đó từ hướng chuyển động của xe để xác định trường hợp chính xác 
+
+   <img width="1262" height="807" alt="image" src="https://github.com/user-attachments/assets/7a33b93e-5b2d-4c12-819d-7bb8d3d43a3d" />
+
    
-   TH3: Không đủ điều kiện, xảy ra khi phương tiện đi qua vạch sai chiều quy định hoặc ngoài vùng polygon detect, kết quả detect đèn hiện UNKNOWN. Kết quả là không tạo event
+   TH5: Không đủ điều kiện, xảy ra khi phương tiện đi qua vạch sai chiều quy định hoặc ngoài vùng polygon detect, kết quả detect đèn hiện UNKNOWN. Kết quả là không tạo event
    
    Với các xe vi phạm thì sẽ crop xe và lưu lại        
 
-#Các trường hợp xảy ra 
+#Các trường hợp khác có thể xảy ra 
 1. Xe đi ngược chiều khi đèn đỏ và đi qua vạch : Vẫn detect xe nhưng không xác định vi phạm do không đi đúng chiều quy định
 2. Mất track sau khi phương tiện vi phạm đi qua vạch : Không xác nhận vi phạm
 3. Xe xuất hiện sẵn sau vạch : Không xác nhận vi phạm do xe không có chuyển động đi qua vạch
-
+4. Trường hợp xe đi ngang qua vùng polygon nhận diện hoặc xe đi từ hướng khác vào vùng polygon nhận diện khi đèn vẫn đang đỏ: Vẫn detect bình thường những không hiện box đỏ và event do không tính là vượt đèn đỏ
 #Chức năng của các file chính
 main.py: Đọc tham số chạy, cấu hình và khởi động
 
