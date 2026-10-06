@@ -55,7 +55,9 @@ Hướng giải quyết:
 2. Mất track sau khi phương tiện vi phạm đi qua vạch : Không xác nhận vi phạm
 3. Xe xuất hiện sẵn sau vạch : Không xác nhận vi phạm do xe không có chuyển động đi qua vạch
 4. Trường hợp xe đi ngang qua vùng polygon nhận diện hoặc xe đi từ hướng khác vào vùng polygon nhận diện khi đèn vẫn đang đỏ: Vẫn detect bình thường những không hiện box đỏ và event do không tính là vượt đèn đỏ
+   
 #Chức năng của các file chính
+
 main.py: Đọc tham số chạy, cấu hình và khởi động
 
 controllers/camera_manager.py:	Quản lý worker từng camera và hiển thị
